@@ -128,6 +128,5 @@ const container = document.querySelector(`.days`);
 daysData.forEach((item) => {
   const dayStr = createDayTemplate(item);
   const dayElement = createElement(dayStr);
-  console.log(dayElement)
   render(container, dayElement, RenderPosition.BEFORE_END);
 });
