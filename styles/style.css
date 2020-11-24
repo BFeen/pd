@@ -8,23 +8,22 @@ body {
 }
 
 header {
-  height: 100px;
+  height: 150px;
   border-bottom: 4px solid blue;
   background-color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 h1 {
   margin: 0;
-  padding: 10px;
-  height: 100%;
+  padding: 30px;
   text-align: center;
 }
 
 main {
-  height: calc(100% - 100px);
+  height: calc(100% - 150px);
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -34,6 +33,8 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -44,6 +45,5 @@ main {
 .days__item {
   width: 14.3%;
   max-height: 100vh;
-  border: 1px solid black;
 }
 /*# sourceMappingURL=style.css.map */
