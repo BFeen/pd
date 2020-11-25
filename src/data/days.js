@@ -1,4 +1,4 @@
-[
+export const daysData = [
   {
     name: "Красота и Здоровье",
     sphere: "Физическая сфера",
@@ -33,7 +33,7 @@
     word: "Радость",
     accent: "Социум, Общение",
     mood: "Праздничный",
-    time_spending: "С семьёй, с друзьями",
+    time_spending: "С семьёй, С друзьями",
     color: "#FFAE03",
   }, {
     name: "Дом, Семья",

@@ -45,5 +45,6 @@ main {
 .days__item {
   width: 14.3%;
   max-height: 100vh;
+  border: 1px solid black;
 }
 /*# sourceMappingURL=style.css.map */
