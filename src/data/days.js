@@ -9,7 +9,6 @@ export const daysData = [
     word: "Красота",
     accent: "Тепло, Лицо, Здоровье",
     mood: "Женственный",
-    time_spending: "Со старшей дочерью",
     color: "#BA2020",
   }, {
     name: "Любовь и Романтика",
@@ -21,7 +20,6 @@ export const daysData = [
     word: "Страсть, любовь",
     accent: "Чувственность",
     mood: "Романтичный",
-    time_spending: "С мужем",
     color: "#FF4A1C",
   }, {
     name: "Общение",
@@ -33,7 +31,6 @@ export const daysData = [
     word: "Радость",
     accent: "Социум, Общение",
     mood: "Праздничный",
-    time_spending: "С семьёй, С друзьями",
     color: "#FFAE03",
   }, {
     name: "Дом, Семья",
@@ -45,7 +42,6 @@ export const daysData = [
     word: "Нежность, уют",
     accent: "Дом, Материнство",
     mood: "Домашний",
-    time_spending: "С младшей дочерью",
     color: "#3E5622",
   }, {
     name: "Творчество",
@@ -57,7 +53,6 @@ export const daysData = [
     word: "Вдохновение",
     accent: "Душа, Связь с космосом",
     mood: "Креативный",
-    time_spending: "С сыном",
     color: "#1AC8ED",
   }, {
     name: "Дела",
@@ -69,8 +64,7 @@ export const daysData = [
     word: "Интерес",
     accent: "Голова, Ум",
     mood: "Деловой",
-    time_spending: "С проектом 'Я'",
-    color: "#537DA2",
+    color: "#33658A",
   }, {
     name: "Тайна",
     sphere: "Духовная сфера",
@@ -81,7 +75,6 @@ export const daysData = [
     word: "Чудеса",
     accent: "Carpe Diem",
     mood: "Раскроется в моменте",
-    time_spending: "Тайна",
     color: "#241023",
   },
 ]

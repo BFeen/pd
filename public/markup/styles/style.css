@@ -60,17 +60,24 @@ main {
 .days__item {
   position: relative;
   width: 14.3%;
-  max-height: 100vh;
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
+  height: 100%;
 }
 
-.days__item-active {
-  width: 15.5%;
+.days__item_active {
+  width: 25%;
+}
+
+.days__item_active > h2 {
+  font-size: 40px;
+}
+
+.days__item:hover > h2 {
+  font-size: 40px;
 }
 
 .days__text {
   width: 100%;
+  font-size: 30px;
   text-transform: uppercase;
   text-align: center;
   position: absolute;
@@ -146,19 +153,5 @@ main {
 h2, h3 {
   padding: 0;
   margin: 0;
-}
-
-.days__text {
-  width: 100%;
-  text-transform: uppercase;
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
-  color: white;
-}
-
-#day {
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
 }
 /*# sourceMappingURL=style.css.map */

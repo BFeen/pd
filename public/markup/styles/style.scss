@@ -56,21 +56,25 @@ main {
   &__item {
     position: relative;
     width: 14.3%;
-    max-height: 100vh;
-    transition: all 0.3s linear;
-    // border: 1px solid black;
+    height: 100%;
+    // transition: all 0.3s linear;
 
-    // &:hover {
-    //   width: 15.5%;
-    // }
-  }
+    &_active {
+      width: 25%;
 
-  &__item-active {
-    width: 15.5%;
+      & > h2 {
+        font-size: 40px;
+      }
+    }
+
+    &:hover > h2{
+      font-size: 40px;
+    }
   }
 
   &__text {
     width: 100%;
+    font-size: 30px;
     text-transform: uppercase;
     text-align: center;
     position: absolute;
@@ -128,17 +132,4 @@ main {
 h2, h3 {
   padding: 0;
   margin: 0;
-}
-
-.days__text {
-  width: 100%;
-  text-transform: uppercase;
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
-  color: white;
-}
-
-#day {
-  transition: all 0.3s linear;
 }
