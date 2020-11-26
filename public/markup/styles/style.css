@@ -17,12 +17,9 @@ body {
   z-index: 100;
 }
 
-.header-open {
+.header_open {
   color: white;
-  height: 250px;
-  background: #3f5823;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(5%, #3f5823), to(#97ae7e));
-  background: linear-gradient(0deg, #3f5823 5%, #97ae7e 100%);
+  height: 350px;
 }
 
 .header__title {
@@ -31,13 +28,12 @@ body {
 }
 
 .header__title-active {
-  font-size: 26px;
-  padding-bottom: 20px;
+  font-size: 30px;
 }
 
 h1 {
   margin: 0;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -91,9 +87,6 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -104,9 +97,8 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -129,16 +121,22 @@ main {
   text-align: center;
   border-radius: 50%;
   background-color: #eee;
-  color: #3E5622;
-  border: 5px solid #3E5622;
+  border-width: 5px;
+  border-style: solid;
 }
 
 .day-info__title {
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .day-info__subtitle {
-  font-size: 16px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.day-info__text {
+  font-size: 22px;
 }
 
 .day-info__text > span {

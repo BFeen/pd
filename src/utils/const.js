@@ -4,4 +4,29 @@ const RenderPosition = {
   BEFORE_END: `beforeend`,
 };
 
-export {RenderPosition};
+const DaysOfWeekList = [
+  {
+    full: "Понедельник",
+    abbr: "ПН",
+  }, {
+    full: "Вторник",
+    abbr: "ВТ",
+  }, {
+    full: "Среда",
+    abbr: "СР",
+  }, {
+    full: "Четверг",
+    abbr: "ЧТ",
+  }, {
+    full: "Пятница",
+    abbr: "ПТ",
+  }, {
+    full: "Суббота",
+    abbr: "СБ",
+  }, {
+    full: "Воскресенье",
+    abbr: "ВС",
+  },
+]
+
+export {RenderPosition, DaysOfWeekList};
