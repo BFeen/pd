@@ -1,10 +1,6 @@
 import {RenderPosition} from "./const.js";
 
 
-const createDayTemplate = (item) => {
-  return `<div class="days__item" style="background-color: ${item.color};"></div>`
-};
-
 const createElement = (template) => {
 // template - JS string with HTML tags
 
@@ -32,4 +28,4 @@ const render = (container, component, place) => {
   }
 };
 
-export {createDayTemplate, createElement, render};
+export {createElement, render};

@@ -58,7 +58,7 @@ export const daysData = [
     accent: "Душа, Связь с космосом",
     mood: "Креативный",
     time_spending: "С сыном",
-    color: "#97EFE9",
+    color: "#1AC8ED",
   }, {
     name: "Дела",
     sphere: "Бизнес сфера",

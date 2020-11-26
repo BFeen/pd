@@ -1,6 +1,7 @@
 import {daysData} from "./data/days.js";
 import {RenderPosition} from "./utils/const.js";
-import {createElement, createDayTemplate, render} from "./utils/render.js";
+import {createElement, render} from "./utils/render.js";
+import createDayTemplate from "./components/day-element.js";
 
 
 const container = document.querySelector(`.days`);
