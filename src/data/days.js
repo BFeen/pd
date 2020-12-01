@@ -9,7 +9,10 @@ export const daysData = [
     word: "Красота",
     accent: "Тепло, Лицо, Здоровье",
     mood: "Женственный",
-    color: "#BA2020",
+    color: {
+      HEX: "#BA2020",
+      HUE: "0",
+    },
   }, {
     name: "Любовь и Романтика",
     sphere: "Любовная сфера",
@@ -20,7 +23,10 @@ export const daysData = [
     word: "Страсть, любовь",
     accent: "Чувственность",
     mood: "Романтичный",
-    color: "#FF4A1C",
+    color: {
+      HEX: "#FF4A1C",
+      HUE: "12",
+    },
   }, {
     name: "Общение",
     sphere: "Событийная сфера",
@@ -31,7 +37,10 @@ export const daysData = [
     word: "Радость",
     accent: "Социум, Общение",
     mood: "Праздничный",
-    color: "#FFAE03",
+    color: {
+      HEX: "#FFAE03",
+      HUE: "41",
+    },
   }, {
     name: "Дом, Семья",
     sphere: "Семейная сфера",
@@ -42,7 +51,11 @@ export const daysData = [
     word: "Нежность, уют",
     accent: "Дом, Материнство",
     mood: "Домашний",
-    color: "#3E5622",
+    color: {
+      HEX: "#3E5622",
+      HUE: "88"
+    },
+
   }, {
     name: "Творчество",
     sphere: "Личностная сфера",
@@ -53,7 +66,10 @@ export const daysData = [
     word: "Вдохновение",
     accent: "Душа, Связь с космосом",
     mood: "Креативный",
-    color: "#1AC8ED",
+    color: {
+      HEX: "#1AC8ED",
+      HUE: "191",
+    },
   }, {
     name: "Дела",
     sphere: "Бизнес сфера",
@@ -64,7 +80,10 @@ export const daysData = [
     word: "Интерес",
     accent: "Голова, Ум",
     mood: "Деловой",
-    color: "#33658A",
+    color: {
+      HEX: "#33658A",
+      HUE: "206",
+    },
   }, {
     name: "Тайна",
     sphere: "Духовная сфера",
@@ -75,6 +94,9 @@ export const daysData = [
     word: "Чудеса",
     accent: "Carpe Diem",
     mood: "Раскроется в моменте",
-    color: "#241023",
+    color: {
+      HEX: "#241023",
+      HUE: "303",
+    },
   },
 ]
