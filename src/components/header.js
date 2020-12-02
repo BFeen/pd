@@ -1,4 +1,7 @@
-const createHeaderTemplate = (dayInfo, dayOfWeek) => {
+import {createElement} from "../utils/render.js";
+
+
+const createHeaderTemplate = (dayInfo) => {
   const {
     name,
     sphere,
@@ -44,4 +47,26 @@ const createHeaderTemplate = (dayInfo, dayOfWeek) => {
   );
 };
 
-export default createHeaderTemplate;
+export default class HeaderComponent {
+  constructor(dayData) {
+    this._dayData = dayData;
+
+    this._element = null;
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  getTemplate() {
+    return createHeaderTemplate(this._dayData);
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

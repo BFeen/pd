@@ -1,24 +1,24 @@
 import {daysData} from "./data/days.js";
 import {RenderPosition, DaysOfWeekList} from "./utils/const.js";
-import {createElement, render} from "./utils/render.js";
-import createDayTemplate from "./components/day-element.js";
-import createHeaderTemplate from "./components/header.js";
+import {render} from "./utils/render.js";
+import DayComponent from "./components/day.js";
+import HeaderComponent from "./components/header.js";
 
-const clickDayElementHandler = (evt) => {
-  console.log(`click`);
-};
 
 const mainContainer = document.querySelector(`body`);
 const daysContainer = mainContainer.querySelector(`.days`);
 
 if (daysData) {
   daysData.forEach((item, index) => {
-    const dayStr = createDayTemplate(item, DaysOfWeekList[index].abbr);
-    const dayElement = createElement(dayStr);
+    const day = new DayComponent(item, DaysOfWeekList[index].abbr);
+    const dayElement = day.getElement();
     render(daysContainer, dayElement, RenderPosition.BEFORE_END);
-    dayElement.addEventListener(`click`, clickDayElementHandler);
+
+    day.setDayClickHandler(() => {
+      console.log(day.dayData)
+      const headerComponent = new HeaderComponent(day.dayData);
+      const headerElement = headerComponent.getElement();
+      render(mainContainer, headerElement, RenderPosition.AFTER_BEGIN);
+    });
   });
-} else {
-  const errorElement = createElement(`Something went wrong`);
-  render(daysContainer, errorElement, RenderPosition.BEFORE_END);
 }
