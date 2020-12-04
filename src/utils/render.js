@@ -1,7 +1,7 @@
 import {RenderPosition} from "./const.js";
 
 
-const createElement = (template) => {
+export const createElement = (template) => {
 // template - JS string with HTML tags
 
   const newElement = document.createElement(`div`);
@@ -10,7 +10,7 @@ const createElement = (template) => {
   return newElement.firstChild;
 };
 
-const render = (container, component, place) => {
+export const render = (container, component, place) => {
 // container - HTML Element
 // component - HTML Element
 // place - RenderPosition enum
@@ -28,4 +28,19 @@ const render = (container, component, place) => {
   }
 };
 
-export {createElement, render};
+export const replace = (oldComponent, newComponent) => {
+  const parentElement = oldComponent.getElement().parentElement;
+  const newElement = newComponent.getElement();
+  const oldElement = oldComponent.getElement();
+
+  const isExistElement = !!(parentElement && newElement && oldElement);
+
+  if (isExistElement && parentElement.contains(oldElement)) {
+    parentElement.replaceChild(newElement, oldElement);
+  }
+}
+
+// export const remove = (component) => {
+//   component.getElement().remove();
+//   component.removeElement();
+// }
