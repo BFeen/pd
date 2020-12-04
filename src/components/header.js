@@ -54,6 +54,14 @@ export default class HeaderComponent {
     this._element = null;
   }
 
+  setData(data) {
+    this._dayData = data;
+  }
+
+  getData() {
+    return this._dayData;
+  }
+
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
@@ -67,6 +75,17 @@ export default class HeaderComponent {
   }
 
   removeElement() {
+    console.log(`Ну ремув. А толку?`)
     this._element = null;
+  }
+
+  rerender() {
+    const oldElement = this.getElement();
+    const parentElement = oldElement.parentElement;
+
+    this.removeElement();
+
+    const newElement = this.getElement();
+    parentElement.replaceChild(newElement, oldElement);
   }
 }

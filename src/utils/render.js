@@ -27,3 +27,20 @@ export const render = (container, component, place) => {
       break;
   }
 };
+
+export const replace = (oldComponent, newComponent) => {
+  const parentElement = oldComponent.getElement().parentElement;
+  const newElement = newComponent.getElement();
+  const oldElement = oldComponent.getElement();
+
+  const isExistElement = !!(parentElement && newElement && oldElement);
+
+  if (isExistElement && parentElement.contains(oldElement)) {
+    parentElement.replaceChild(newElement, oldElement);
+  }
+}
+
+// export const remove = (component) => {
+//   component.getElement().remove();
+//   component.removeElement();
+// }

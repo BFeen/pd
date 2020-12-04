@@ -99,4 +99,4 @@ export const daysData = [
       HUE: "303",
     },
   },
-]
+];

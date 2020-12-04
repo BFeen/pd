@@ -11,14 +11,19 @@ const createDayTemplate = (item, dayOfWeek) => {
 
 export default class DayComponent {
   constructor(dayData, dayOfWeek) {
-    this.dayData = dayData;
+    this._dayData = dayData;
     this._dayOfWeek = dayOfWeek
 
     this._element = null;
+    this._isActive = false;
+  }
+
+  getData() {
+    return this._dayData;
   }
 
   getTemplate() {
-    return createDayTemplate(this.dayData, this._dayOfWeek);
+    return createDayTemplate(this._dayData, this._dayOfWeek);
   }
 
   getElement() {
@@ -33,8 +38,27 @@ export default class DayComponent {
     this._element = null;
   }
 
+  toggleActiveClass() {
+    const activeClass = `days__item_active`;
+    if (this._element.classList.contains(activeClass)) {
+      this._isActive = false;
+      this._element.classList.remove(activeClass);
+    } else {
+      this._isActive = true;
+      this._element.classList.add(activeClass);
+    }
+  }
+
+  setDefaultView() {
+    this._isActive = false;
+    this._element.classList.remove(`days__item_active`);
+  }
+
   setDayClickHandler(handler) {
-    const element = this.getElement();
-    element.addEventListener(`click`, handler);
+    this.getElement().addEventListener(`click`, handler);
+  }
+
+  isActive() {
+    return this._isActive;
   }
 }

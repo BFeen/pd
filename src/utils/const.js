@@ -27,6 +27,6 @@ const DaysOfWeekList = [
     full: "Воскресенье",
     abbr: "ВС",
   },
-]
+];
 
 export {RenderPosition, DaysOfWeekList};
