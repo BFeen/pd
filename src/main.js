@@ -5,7 +5,6 @@ import DayComponent from "./components/day.js";
 import HeaderComponent from "./components/header.js";
 
 
-
 const changeView = (days, dayId) => {
   days.forEach((item) => {
     if (item.num !== dayId && item.isActive()) {
@@ -21,9 +20,11 @@ const days = daysData.map((item, index) => {
 
 const mainContainer = document.querySelector(`body`);
 const daysContainer = mainContainer.querySelector(`.days`);
-const headerComponent = new HeaderComponent();
+const headerComponent = new HeaderComponent(days[today].getData());
+const headerElement = headerComponent.getElement();
+render(mainContainer, headerElement, RenderPosition.AFTER_BEGIN);
 
-if (daysData) {
+if (daysData.length > 0) {
   days.forEach((day, index, array) => {
     const dayElement = day.getElement();
 
@@ -39,8 +40,6 @@ if (daysData) {
       day.toggleActiveClass();
 
       headerComponent.setData(day.getData());
-      const headerElement = headerComponent.getElement();
-      render(mainContainer, headerElement, RenderPosition.AFTER_BEGIN);
       headerComponent.rerender();
     });
   });
