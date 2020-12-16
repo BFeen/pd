@@ -13,12 +13,37 @@ const changeView = (days, dayId) => {
   })
 };
 
-const today = new Date().getDay() - 1;
-const days = daysData.map((item, index) => {
-  return new DayComponent(item, DaysOfWeekList[index].abbr);
-});
+const randomize = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return array;
+};
 
 const mainContainer = document.querySelector(`body`);
+
+mainContainer.addEventListener(`keydown`, (evt) => {
+  if (evt.code === `Space`) {
+    randomize(days);
+    console.log(days);
+  }
+});
+
+const getDaysList = (data) => {
+  return data.map((item, index) => {
+    return new DayComponent(item, DaysOfWeekList[index].abbr);
+  });
+};
+
+const today = new Date().getDay() - 1;
+const days = getDaysList(daysData);
+
+console.log(days);
+
 const daysContainer = mainContainer.querySelector(`.days`);
 const headerComponent = new HeaderComponent(days[today].getData());
 const headerElement = headerComponent.getElement();
