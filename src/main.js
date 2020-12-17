@@ -2,6 +2,7 @@ import {daysData} from "./data/days.js";
 import {RenderPosition, DaysOfWeekList} from "./utils/const.js";
 import {render} from "./utils/render.js";
 import DayComponent from "./components/day.js";
+import DaysContainerComponent from "./components/days-container.js";
 import HeaderComponent from "./components/header.js";
 
 
@@ -24,7 +25,7 @@ const randomize = (array) => {
   return array;
 };
 
-const mainContainer = document.querySelector(`body`);
+const mainContainer = document.querySelector(`main`);
 
 mainContainer.addEventListener(`keydown`, (evt) => {
   if (evt.code === `Space`) {
@@ -42,11 +43,13 @@ const getDaysList = (data) => {
 const today = new Date().getDay() - 1;
 const days = getDaysList(daysData);
 
-console.log(days);
+const daysContainerComponent = new DaysContainerComponent();
 
-const daysContainer = mainContainer.querySelector(`.days`);
 const headerComponent = new HeaderComponent(days[today].getData());
 const headerElement = headerComponent.getElement();
+const daysContainerElement = daysContainerComponent.getElement();
+
+render(mainContainer, daysContainerElement, RenderPosition.BEFORE_END)
 render(mainContainer, headerElement, RenderPosition.AFTER_BEGIN);
 
 if (daysData.length > 0) {
@@ -58,7 +61,7 @@ if (daysData.length > 0) {
       day.toggleActiveClass();
     }
 
-    render(daysContainer, dayElement, RenderPosition.BEFORE_END);
+    render(daysContainerElement, dayElement, RenderPosition.BEFORE_END);
 
     day.setDayClickHandler(() => {
       changeView(array, day.getData().num);
