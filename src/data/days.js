@@ -1,4 +1,4 @@
-export const daysData = [
+export const DaysData = [
   {
     name: "Красота и Здоровье",
     sphere: "Физическая сфера",
