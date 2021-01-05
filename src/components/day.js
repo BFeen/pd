@@ -3,7 +3,7 @@ import {createElement} from "../utils/render.js";
 
 const createDayTemplate = (item, dayOfWeek) => {
   return (
-    `<div class="days__item" style="background-color: ${item.color.HEX};">
+    `<div class="days__item" style="background-color: ${item.color};">
       <h2 class="days__text">${dayOfWeek}</h2>
     </div>`
   );
@@ -16,10 +16,18 @@ export default class DayComponent {
 
     this._element = null;
     this._isActive = false;
+
+    this._clickHandler = null;
+
+    this.setDayClickHandler = this.setDayClickHandler.bind(this);
   }
 
   getData() {
     return this._dayData;
+  }
+
+  setData(newData) {
+    this._dayData = newData;
   }
 
   getTemplate() {
@@ -56,9 +64,32 @@ export default class DayComponent {
 
   setDayClickHandler(handler) {
     this.getElement().addEventListener(`click`, handler);
+    this._clickHandler = handler;
   }
 
   isActive() {
     return this._isActive;
+  }
+
+  // =====================
+
+  removeElement() {
+    this._element = null;
+  }
+
+  rerender() {
+    const oldElement = this.getElement();
+    const parentElement = oldElement.parentElement;
+
+    this.removeElement();
+
+    const newElement = this.getElement();
+    parentElement.replaceChild(newElement, oldElement);
+
+    this._recoveryListeners();
+  }
+
+  _recoveryListeners() {
+    this.setDayClickHandler(this._clickHandler);
   }
 }

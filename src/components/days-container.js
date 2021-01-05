@@ -2,7 +2,7 @@ import {createElement} from "../utils/render.js";
 
 
 const createDaysTemplate = () => {
-  return `<div class="days"></div>`;
+  return `<section class="days"></section>`;
 }
 
 export default class DaysContainerComponent {
