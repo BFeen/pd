@@ -75,7 +75,6 @@ export default class HeaderComponent {
   }
 
   removeElement() {
-    console.log(`Ну ремув. А толку?`)
     this._element = null;
   }
 

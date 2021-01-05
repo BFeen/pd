@@ -1,46 +1,40 @@
-import {daysData} from "./data/days.js";
-import {RenderPosition, DaysOfWeekList} from "./utils/const.js";
-import {render} from "./utils/render.js";
+import DaysModel from "./models/days";
 import DayComponent from "./components/day.js";
-import HeaderComponent from "./components/header.js";
+import DaysContainerComponent from "./components/days-container.js";
+import {DaysOfWeekList, RenderPosition} from "./utils/const.js";
+import {render} from "./utils/render.js";
 
 
-const changeView = (days, dayId) => {
-  days.forEach((item) => {
-    if (item.num !== dayId && item.isActive()) {
-      item.setDefaultView();
-    }
-  })
-};
+const daysModel = new DaysModel();
 
-const today = new Date().getDay() - 1;
-const days = daysData.map((item, index) => {
+const mainContainer = document.querySelector(`main`);
+
+const daysContainer = new DaysContainerComponent();
+render(mainContainer, daysContainer.getElement(), RenderPosition.BEFORE_END);
+
+const dayComponents = daysModel.getDays().map((item, index) => {
   return new DayComponent(item, DaysOfWeekList[index].abbr);
 });
 
-const mainContainer = document.querySelector(`body`);
-const daysContainer = mainContainer.querySelector(`.days`);
-const headerComponent = new HeaderComponent(days[today].getData());
-const headerElement = headerComponent.getElement();
-render(mainContainer, headerElement, RenderPosition.AFTER_BEGIN);
+dayComponents.forEach((component) => {
+  render(daysContainer.getElement(), component.getElement(), RenderPosition.BEFORE_END);
+  
+  component.setDayClickHandler(() => {
+    console.log(component.getData());
+  });
+});
 
-if (daysData.length > 0) {
-  days.forEach((day, index, array) => {
-    const dayElement = day.getElement();
+document.querySelector(`body`).addEventListener(`keydown`, (evt) => {
+  if (evt.code === `Space`) {
+    shuffleDaysData(dayComponents);
+  }
+});
 
-    if (index === today) {
-      headerComponent.setData(day.getData());
-      day.toggleActiveClass();
-    }
+function shuffleDaysData(components) {
+  const newData = daysModel.shuffle();
 
-    render(daysContainer, dayElement, RenderPosition.BEFORE_END);
-
-    day.setDayClickHandler(() => {
-      changeView(array, day.getData().num);
-      day.toggleActiveClass();
-
-      headerComponent.setData(day.getData());
-      headerComponent.rerender();
-    });
+  components.forEach((component, index) => {
+    component.setData(newData[index]);
+    component.rerender();
   });
 }

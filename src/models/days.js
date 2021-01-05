@@ -1,4 +1,4 @@
-export const daysData = [
+const DaysData = [
   {
     name: "Красота и Здоровье",
     sphere: "Физическая сфера",
@@ -9,10 +9,7 @@ export const daysData = [
     word: "Красота",
     accent: "Тепло, Лицо, Здоровье",
     mood: "Женственный",
-    color: {
-      HEX: "#BA2020",
-      HUE: "0",
-    },
+    color: "#BA2020",
   }, {
     name: "Любовь и Романтика",
     sphere: "Любовная сфера",
@@ -23,10 +20,7 @@ export const daysData = [
     word: "Страсть, любовь",
     accent: "Чувственность",
     mood: "Романтичный",
-    color: {
-      HEX: "#FF4A1C",
-      HUE: "12",
-    },
+    color: "#FF4A1C",
   }, {
     name: "Общение",
     sphere: "Событийная сфера",
@@ -37,10 +31,7 @@ export const daysData = [
     word: "Радость",
     accent: "Социум, Общение",
     mood: "Праздничный",
-    color: {
-      HEX: "#FFAE03",
-      HUE: "41",
-    },
+    color: "#FFAE03",
   }, {
     name: "Дом, Семья",
     sphere: "Семейная сфера",
@@ -51,11 +42,7 @@ export const daysData = [
     word: "Нежность, уют",
     accent: "Дом, Материнство",
     mood: "Домашний",
-    color: {
-      HEX: "#3E5622",
-      HUE: "88"
-    },
-
+    color: "#3E5622",
   }, {
     name: "Творчество",
     sphere: "Личностная сфера",
@@ -66,10 +53,7 @@ export const daysData = [
     word: "Вдохновение",
     accent: "Душа, Связь с космосом",
     mood: "Креативный",
-    color: {
-      HEX: "#1AC8ED",
-      HUE: "191",
-    },
+    color: "#1AC8ED",
   }, {
     name: "Дела",
     sphere: "Бизнес сфера",
@@ -80,10 +64,7 @@ export const daysData = [
     word: "Интерес",
     accent: "Голова, Ум",
     mood: "Деловой",
-    color: {
-      HEX: "#33658A",
-      HUE: "206",
-    },
+    color: "#33658A",
   }, {
     name: "Тайна",
     sphere: "Духовная сфера",
@@ -94,9 +75,30 @@ export const daysData = [
     word: "Чудеса",
     accent: "Carpe Diem",
     mood: "Раскроется в моменте",
-    color: {
-      HEX: "#241023",
-      HUE: "303",
-    },
+    color: "#241023",
   },
 ];
+
+export default class DaysModel {
+  constructor() {
+    this._days = Array.from(DaysData);
+
+    this.shuffle = this.shuffle.bind(this);
+  }
+
+  getDays() {
+    return this._days;
+  }
+
+  shuffle() {
+    const days = [].concat(this._days);
+    for (let i = days.length - 1; i > 0; i--) {
+      const place = Math.floor(Math.random() * (i + 1));
+      [days[i], days[place]] = [days[place], days[i]];
+    }
+    
+    this._days = days;
+
+    return this._days;
+  }
+}
