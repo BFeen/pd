@@ -17,8 +17,8 @@ const createHeaderTemplate = (dayInfo) => {
 
   return (
     `<header 
-      class="header header_open" 
-      style="background-color: ${color.HEX}""
+      class="header header_open hidden" 
+      style="background-color: ${color}""
     >
       <h1 class="header__title-active">Предназначение дня: ${name}</h1>
 
@@ -52,6 +52,7 @@ export default class HeaderComponent {
     this._dayData = dayData;
 
     this._element = null;
+    this._isHidden = true;
   }
 
   setData(data) {
@@ -71,7 +72,23 @@ export default class HeaderComponent {
   }
 
   getTemplate() {
-    return createHeaderTemplate(this._dayData);
+    if (this._dayData) {
+      return createHeaderTemplate(this._dayData);
+    }
+
+    throw new Error(`HeaderComponent's data is null!`);
+  }
+
+  show() {
+    if (this._element) {
+      this._element.classList.remove(`hidden`);
+    }
+  }
+
+  hide() {
+    if (this._element) {
+      this._element.classList.add(`hidden`);
+    }
   }
 
   removeElement() {

@@ -91,5 +91,8 @@ export default class DayComponent {
 
   _recoveryListeners() {
     this.setDayClickHandler(this._clickHandler);
+    if (this._isActive) {
+      this.toggleActiveClass();
+    }
   }
 }
