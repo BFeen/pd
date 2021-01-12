@@ -90,11 +90,6 @@ export default class DaysModel {
     return this._days;
   }
 
-  getTodayData() {
-    const todayIndex = new Date().getDay() - 1;
-    return this._days[todayIndex];
-  }
-
   shuffle() {
     const days = [].concat(this._days);
     for (let i = days.length - 1; i > 0; i--) {

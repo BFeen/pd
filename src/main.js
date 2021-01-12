@@ -9,7 +9,7 @@ import {render} from "./utils/render.js";
 const daysModel = new DaysModel();
 
 const mainContainer = document.querySelector(`main`);
-const headerComponent = new HeaderComponent(daysModel.getTodayData());
+const headerComponent = new HeaderComponent();
 render(mainContainer, headerComponent.getElement(), RenderPosition.BEFORE_END);
 
 const daysContainer = new DaysContainerComponent();
@@ -19,22 +19,31 @@ const dayComponents = daysModel.getDays().map((item, index) => {
   return new DayComponent(item, DaysOfWeekList[index].abbr);
 });
 
-dayComponents.forEach((component, index) => {
+dayComponents.forEach((component) => {
   render(daysContainer.getElement(), component.getElement(), RenderPosition.BEFORE_END);
 
   component.setDayClickHandler(() => {
     const dayData = component.getData();
 
     changeDaysView(dayData.num);
-    component.toggleActiveClass();
 
-    headerComponent.setData(dayData);
+    if (component.isActive()) {
+      if (dayData.num !== headerComponent.getData().num) {
+        headerComponent.setData(dayData);
+        headerComponent.rerender();
+      }
+      
+      headerComponent.show();
+    } else {
+      headerComponent.hide();
+    }
   });
 });
 
 document.querySelector(`body`).addEventListener(`keydown`, (evt) => {
   if (evt.code === `Space`) {
     shuffleDaysData(dayComponents);
+    headerComponent.hide();
   }
 });
 
@@ -45,13 +54,16 @@ function shuffleDaysData(components) {
     component.setData(newData[index]);
     component.rerender();
   });
+
+  headerComponent.resetData();
 }
 
 function changeDaysView(currentDayId) {
-  // headerComponent.hide();
   dayComponents.forEach((item) => {
-    if (currentDayId !== item.num) {
+    if (currentDayId !== item.getData().num) {
       item.setDefaultView();
+    } else {
+      item.toggleActiveClass();
     }
   });
 }

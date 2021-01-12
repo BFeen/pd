@@ -48,7 +48,7 @@ export default class DayComponent {
 
   toggleActiveClass() {
     const activeClass = `days__item_active`;
-    if (this._element.classList.contains(activeClass)) {
+    if (this._isActive) {
       this._isActive = false;
       this._element.classList.remove(activeClass);
     } else {
@@ -91,6 +91,7 @@ export default class DayComponent {
 
   _recoveryListeners() {
     this.setDayClickHandler(this._clickHandler);
+
     if (this._isActive) {
       this.toggleActiveClass();
     }
