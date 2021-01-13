@@ -82,8 +82,6 @@ const DaysData = [
 export default class DaysModel {
   constructor() {
     this._days = Array.from(DaysData);
-
-    this.shuffle = this.shuffle.bind(this);
   }
 
   getDays() {

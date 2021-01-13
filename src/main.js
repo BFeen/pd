@@ -1,6 +1,5 @@
 import DaysModel from "./models/days";
 import DayComponent from "./components/day.js";
-import DaysContainerComponent from "./components/days-container.js";
 import HeaderComponent from "./components/header.js";
 import {DaysOfWeekList, RenderPosition} from "./utils/const.js";
 import {render} from "./utils/render.js";
@@ -9,19 +8,18 @@ import {render} from "./utils/render.js";
 const daysModel = new DaysModel();
 
 const mainContainer = document.querySelector(`main`);
+const daysContainer = document.querySelector(`.days`);
 const headerComponent = new HeaderComponent();
-render(mainContainer, headerComponent.getElement(), RenderPosition.BEFORE_END);
-
-const daysContainer = new DaysContainerComponent();
-render(mainContainer, daysContainer.getElement(), RenderPosition.BEFORE_END);
+render(mainContainer, headerComponent.getElement(), RenderPosition.AFTER_BEGIN);
 
 const dayComponents = daysModel.getDays().map((item, index) => {
-  return new DayComponent(item, DaysOfWeekList[index].abbr);
+  const day = new DayComponent(item, DaysOfWeekList[index].abbr);
+  render(daysContainer, day.getElement(), RenderPosition.BEFORE_END);
+
+  return day;
 });
 
 dayComponents.forEach((component) => {
-  render(daysContainer.getElement(), component.getElement(), RenderPosition.BEFORE_END);
-
   component.setDayClickHandler(() => {
     const dayData = component.getData();
 
@@ -54,8 +52,6 @@ function shuffleDaysData(components) {
     component.setData(newData[index]);
     component.rerender();
   });
-
-  headerComponent.resetData();
 }
 
 function changeDaysView(currentDayId) {

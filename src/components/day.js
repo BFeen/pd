@@ -16,7 +16,6 @@ export default class DayComponent {
 
     this._element = null;
     this._isActive = false;
-
     this._clickHandler = null;
 
     this.setDayClickHandler = this.setDayClickHandler.bind(this);
@@ -40,10 +39,6 @@ export default class DayComponent {
     }
 
     return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 
   toggleActiveClass() {
@@ -71,8 +66,6 @@ export default class DayComponent {
     return this._isActive;
   }
 
-  // =====================
-
   removeElement() {
     this._element = null;
   }
@@ -91,9 +84,5 @@ export default class DayComponent {
 
   _recoveryListeners() {
     this.setDayClickHandler(this._clickHandler);
-
-    if (this._isActive) {
-      this.toggleActiveClass();
-    }
   }
 }

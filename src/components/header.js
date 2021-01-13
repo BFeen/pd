@@ -7,16 +7,9 @@ const EmptyData = {
 
 const createHeaderTemplate = (dayInfo) => {
   const {
-    name,
-    sphere,
-    num,
-    role,
-    mission,
-    state,
-    word,
-    accent,
-    mood,
-    color
+    name, sphere, num,
+    role, mission, state,
+    word, accent, mood, color
   } = dayInfo;
 
   return (
@@ -67,10 +60,6 @@ export default class HeaderComponent {
     return this._dayData;
   }
 
-  resetData() {
-    this._dayData = EmptyData;
-  }
-
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
@@ -80,23 +69,7 @@ export default class HeaderComponent {
   }
 
   getTemplate() {
-    if (this._dayData) {
-      return createHeaderTemplate(this._dayData);
-    }
-
-    throw new Error(`HeaderComponent's data is null!`);
-  }
-
-  toggleHiddenClass() {
-    const hiddenClass = `hidden`;
-
-    if (this._isHidden) {
-      this._isHidden = false;
-      this._element.classList.remove(hiddenClass);
-    } else {
-      this._isHidden = true;
-      this._element.classList.add(hiddenClass);
-    }
+    return createHeaderTemplate(this._dayData);
   }
 
   isHidden() {
@@ -130,6 +103,4 @@ export default class HeaderComponent {
     const newElement = this.getElement();
     parentElement.replaceChild(newElement, oldElement);
   }
-
-  _recoveryState() {} // восстановление статуса видимого/скрытого класса
 }
