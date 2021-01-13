@@ -1,24 +1,21 @@
 import {createElement} from "../utils/render.js";
 
+const EmptyData = {
+  name: ``, sphere: ``, num: -1, role: ``,  mission: ``,
+  state: ``, word: ``, accent: ``, mood: ``, color: ``,
+};
 
 const createHeaderTemplate = (dayInfo) => {
   const {
-    name,
-    sphere,
-    num,
-    role,
-    mission,
-    state,
-    word,
-    accent,
-    mood,
-    color
+    name, sphere, num,
+    role, mission, state,
+    word, accent, mood, color
   } = dayInfo;
 
   return (
     `<header 
-      class="header header_open" 
-      style="background-color: ${color.HEX}""
+      class="header header_open hidden" 
+      style="background-color: ${color}""
     >
       <h1 class="header__title-active">Предназначение дня: ${name}</h1>
 
@@ -34,7 +31,7 @@ const createHeaderTemplate = (dayInfo) => {
             <p class="day-info__text"><span>Миссия:</span> ${mission}</p>
             <p class="day-info__text"><span>Состояние:</span> ${state}</p>
           </div>
-          <div class="day-info__num" style="color: ${color.HEX}; border-color: ${color.HEX}">${num}</div>
+          <div class="day-info__num" style="color: ${color}; border-color: ${color}">${num}</div>
           <div class="day-info__item">
             <p class="day-info__text"><span>Мысль, слово:</span> ${word}</p>
             <p class="day-info__text"><span>Акцент:</span> ${accent}</p>
@@ -48,14 +45,15 @@ const createHeaderTemplate = (dayInfo) => {
 };
 
 export default class HeaderComponent {
-  constructor(dayData) {
-    this._dayData = dayData;
+  constructor() {
+    this._dayData = EmptyData;
 
     this._element = null;
+    this._isHidden = true;
   }
 
-  setData(data) {
-    this._dayData = data;
+  setData(newData) {
+    this._dayData = newData;
   }
 
   getData() {
@@ -72,6 +70,24 @@ export default class HeaderComponent {
 
   getTemplate() {
     return createHeaderTemplate(this._dayData);
+  }
+
+  isHidden() {
+    return this._isHidden;
+  }
+
+  show() {
+    if (this._element) {
+      this._isHidden = false;
+      this._element.classList.remove(`hidden`);
+    }
+  }
+
+  hide() {
+    if (this._element) {
+      this._isHidden = true;
+      this._element.classList.add(`hidden`);
+    }
   }
 
   removeElement() {

@@ -16,7 +16,6 @@ export default class DayComponent {
 
     this._element = null;
     this._isActive = false;
-
     this._clickHandler = null;
 
     this.setDayClickHandler = this.setDayClickHandler.bind(this);
@@ -42,13 +41,9 @@ export default class DayComponent {
     return this._element;
   }
 
-  removeElement() {
-    this._element = null;
-  }
-
   toggleActiveClass() {
     const activeClass = `days__item_active`;
-    if (this._element.classList.contains(activeClass)) {
+    if (this._isActive) {
       this._isActive = false;
       this._element.classList.remove(activeClass);
     } else {
@@ -70,8 +65,6 @@ export default class DayComponent {
   isActive() {
     return this._isActive;
   }
-
-  // =====================
 
   removeElement() {
     this._element = null;
