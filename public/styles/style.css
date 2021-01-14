@@ -14,7 +14,6 @@ body {
 .header {
   position: absolute;
   top: 0;
-  height: 150px;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -23,22 +22,17 @@ body {
 
 .header_open {
   color: white;
-  height: 350px;
+  height: 77%;
 }
 
 .header__title {
-  background-color: white;
-  font-size: 25px;
-}
-
-.header__title-active {
+  height: 15%;
   font-size: 30px;
-}
-
-h1 {
   margin: 0;
-  padding: 20px;
+  padding-top: 50px;
   text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 main {
@@ -90,6 +84,7 @@ main {
 }
 
 .day-info {
+  height: 80%;
   color: white;
   padding: 0 40px;
   display: -webkit-box;
@@ -105,11 +100,13 @@ main {
 }
 
 .day-info__flexbox {
+  padding: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -121,6 +118,10 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.day-info__item {
+  width: 47%;
 }
 
 .day-info__num {
@@ -144,9 +145,11 @@ main {
   font-size: 24px;
   padding-top: 10px;
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .day-info__text {
+  text-align: center;
   font-size: 22px;
 }
 
@@ -157,5 +160,47 @@ main {
 h2, h3 {
   padding: 0;
   margin: 0;
+}
+
+@media (max-width: 800px) {
+  .days {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .days__text {
+    padding-left: 20px;
+    text-align: left;
+  }
+  .days__item {
+    width: 100%;
+  }
+  .header {
+    width: 77%;
+    right: 0;
+    height: 100%;
+  }
+  .header__title {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.8em;
+  }
+  .day-info {
+    padding: 0 10px;
+  }
+  .day-info__flexbox {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .day-info__text {
+    font-size: 1.1em;
+  }
+  .day-info__subtitle {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
 }
 /*# sourceMappingURL=style.css.map */

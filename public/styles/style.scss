@@ -14,7 +14,6 @@ body {
 .header {
   position: absolute;
   top: 0;
-  height: 150px;
   width: 100%;
   box-sizing: border-box;
   z-index: 100;
@@ -23,25 +22,22 @@ body {
   &_open {
     // transition: all 0.3s linear;
     color: white;
-    height: 350px;
+    height: 77%;
     // background: hsla(88, 43%, 24%, 1);
     // background: linear-gradient(0deg, hsla(88, 43%, 24%, 1) 5%, hsla(88, 23%, 59%, 1) 100%);
   }
 
   &__title {
-    background-color: white;
-    font-size: 25px;
-  }
-
-  &__title-active {
+    height: 15%;
     font-size: 30px;
+    margin: 0;
+    padding-top: 50px;
+    text-align: center;
+    box-sizing: border-box;
   }
 }
 
 h1 {
-  margin: 0;
-  padding: 20px;
-  text-align: center;
 }
 
 main {
@@ -89,6 +85,7 @@ main {
 
 // ===================================
 .day-info {
+  height: 80%;
   color: white;
   padding: 0 40px;
   display: flex;
@@ -96,14 +93,18 @@ main {
   flex-direction: column;
 
   &__flexbox {
+    padding: 5px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 
     &-vertical {
       flex-direction: column;
     }
+  }
+  &__item {
+    width: 47%;
   }
   &__num {
     width: 80px;
@@ -124,8 +125,10 @@ main {
     font-size: 24px;
     padding-top: 10px;
     padding-bottom: 20px;
+    text-align: center;
   }
   &__text {
+    text-align: center;
     font-size: 22px;
   }
   &__text > span {
@@ -136,4 +139,45 @@ main {
 h2, h3 {
   padding: 0;
   margin: 0;
+}
+
+@media (max-width: 800px) {
+  .days {
+    flex-direction: column;
+    &__text {
+      padding-left: 20px;
+      text-align: left;
+    }
+    &__item {
+      width: 100%;
+      // &:hover > h2{
+      //   font-size: 30px;
+      // }
+    }
+  }
+
+  .header {
+    width: 77%;
+    right: 0;
+    height: 100%;
+    &__title {
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 1.8em;
+    }
+  }
+
+  .day-info {
+    padding: 0 10px;
+    &__flexbox {
+      flex-direction: column;
+    }
+    &__text {
+      font-size: 1.1em;
+    }
+    &__subtitle {
+      font-size: 1.5em;
+      font-weight: 500;
+    }
+  }
 }

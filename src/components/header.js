@@ -17,12 +17,14 @@ const createHeaderTemplate = (dayInfo) => {
       class="header header_open hidden" 
       style="background-color: ${color}""
     >
-      <h1 class="header__title-active">Предназначение дня: ${name}</h1>
+      <h1 class="header__title">Предназначение дня: ${name}</h1>
 
       <div class="day-info">
 
         <div class="day-info__flexbox day-info__flexbox-vertical">
           <h2 class="day-info__subtitle">${sphere}</h2>
+          
+          <div class="day-info__num" style="color: ${color}; border-color: ${color}">${num}</div>
         </div>
 
         <div class="day-info__flexbox">
@@ -31,7 +33,6 @@ const createHeaderTemplate = (dayInfo) => {
             <p class="day-info__text"><span>Миссия:</span> ${mission}</p>
             <p class="day-info__text"><span>Состояние:</span> ${state}</p>
           </div>
-          <div class="day-info__num" style="color: ${color}; border-color: ${color}">${num}</div>
           <div class="day-info__item">
             <p class="day-info__text"><span>Мысль, слово:</span> ${word}</p>
             <p class="day-info__text"><span>Акцент:</span> ${accent}</p>
