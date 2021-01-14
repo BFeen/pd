@@ -7,10 +7,10 @@ import {render} from "./utils/render.js";
 
 const daysModel = new DaysModel();
 
-const mainContainer = document.querySelector(`main`);
+const bodyContainer = document.querySelector(`body`);
 const daysContainer = document.querySelector(`.days`);
 const headerComponent = new HeaderComponent();
-render(mainContainer, headerComponent.getElement(), RenderPosition.AFTER_BEGIN);
+render(bodyContainer, headerComponent.getElement(), RenderPosition.AFTER_BEGIN);
 
 const dayComponents = daysModel.getDays().map((item, index) => {
   const day = new DayComponent(item, DaysOfWeekList[index].abbr);

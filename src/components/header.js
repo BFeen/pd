@@ -14,7 +14,7 @@ const createHeaderTemplate = (dayInfo) => {
 
   return (
     `<header 
-      class="header header_open hidden" 
+      class="header hidden" 
       style="background-color: ${color}""
     >
       <h1 class="header__title">Предназначение дня: ${name}</h1>
