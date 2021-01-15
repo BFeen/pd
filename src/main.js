@@ -7,10 +7,11 @@ import {render} from "./utils/render.js";
 
 const daysModel = new DaysModel();
 
-const bodyContainer = document.querySelector(`body`);
+const mainContainer = document.querySelector(`main`);
 const daysContainer = document.querySelector(`.days`);
+const shuffleButton = document.querySelector(`.btn-shuffle`);
 const headerComponent = new HeaderComponent();
-render(bodyContainer, headerComponent.getElement(), RenderPosition.AFTER_BEGIN);
+render(mainContainer, headerComponent.getElement(), RenderPosition.AFTER_BEGIN);
 
 const dayComponents = daysModel.getDays().map((item, index) => {
   const day = new DayComponent(item, DaysOfWeekList[index].abbr);
@@ -38,10 +39,13 @@ dayComponents.forEach((component) => {
   });
 });
 
+shuffleButton.addEventListener(`click`, () => {
+  shuffleDays();
+});
+
 document.querySelector(`body`).addEventListener(`keydown`, (evt) => {
   if (evt.code === `Space`) {
-    shuffleDaysData(dayComponents);
-    headerComponent.hide();
+    shuffleDays();
   }
 });
 
@@ -62,4 +66,9 @@ function changeDaysView(currentDayId) {
       item.toggleActiveClass();
     }
   });
+}
+
+function shuffleDays() {
+  shuffleDaysData(dayComponents);
+  headerComponent.hide();
 }
