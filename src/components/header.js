@@ -28,16 +28,12 @@ const createHeaderTemplate = (dayInfo) => {
         </div>
 
         <div class="day-info__flexbox">
-          <div class="day-info__item">
             <p class="day-info__text"><span>Роль:</span> ${role}</p>
             <p class="day-info__text"><span>Миссия:</span> ${mission}</p>
             <p class="day-info__text"><span>Состояние:</span> ${state}</p>
-          </div>
-          <div class="day-info__item">
             <p class="day-info__text"><span>Мысль, слово:</span> ${word}</p>
             <p class="day-info__text"><span>Акцент:</span> ${accent}</p>
             <p class="day-info__text"><span>Настрой:</span> ${mood}</p>
-          </div>
         </div>
       </div>
 
