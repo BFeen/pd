@@ -1,6 +1,7 @@
 import DaysModel from "./models/days";
 import DayComponent from "./components/day.js";
 import HeaderComponent from "./components/header.js";
+import ShuffleBtn from "./components/shuffle-btn.js";
 import {DaysOfWeekList, RenderPosition} from "./utils/const.js";
 import {render} from "./utils/render.js";
 
@@ -9,6 +10,9 @@ const daysModel = new DaysModel();
 
 const mainContainer = document.querySelector(`main`);
 const daysContainer = document.querySelector(`.days`);
+const shuffleBtn = new ShuffleBtn(!isMobileView());
+render(mainContainer, shuffleBtn.getElement(), RenderPosition.AFTER_END);
+
 const headerComponent = new HeaderComponent();
 render(mainContainer, headerComponent.getElement(), RenderPosition.AFTER_BEGIN);
 
@@ -32,16 +36,35 @@ dayComponents.forEach((component) => {
       }
       
       headerComponent.show();
+      
+      if (isMobileView()) {
+        shuffleBtn.hide();
+      }
     } else {
       headerComponent.hide();
+      
+      if (isMobileView()) {
+        shuffleBtn.show();
+      }
     }
   });
 });
 
+shuffleBtn.setBtnClickHandler(() => {
+  shuffleDaysHandler();
+});
+
 document.querySelector(`body`).addEventListener(`keydown`, (evt) => {
   if (evt.code === `Space`) {
-    shuffleDaysData(dayComponents);
-    headerComponent.hide();
+    shuffleDaysHandler();
+  }
+});
+
+window.addEventListener(`resize`, () => {
+  if (isMobileView() && shuffleBtn.isHidden() && headerComponent.isHidden()) {
+    shuffleBtn.show();
+  } else if (!isMobileView() && !shuffleBtn.isHidden()) {
+    shuffleBtn.hide();
   }
 });
 
@@ -62,4 +85,13 @@ function changeDaysView(currentDayId) {
       item.toggleActiveClass();
     }
   });
+}
+
+function shuffleDaysHandler() {
+  shuffleDaysData(dayComponents);
+  headerComponent.hide();
+}
+
+function isMobileView() {
+  return window.screen.width < 800;
 }
